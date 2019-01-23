@@ -1,3 +1,3 @@
-# Syllabus for Intro to Web Design and Computer Principles (CSCI-UA.0004)
+# Syllabus for Web Programming (MEDP 341)
 
-The syllabus web site for section 003 of Introduction to Web Design and Computer Principles (CSCI-UA.0004) at NYU’s Courant Institute of Mathematical Sciences.
+The syllabus web site for Web Programming (MEDP 341) at Hunter College’s Film and Media Studies Dept. This site is hosted at [https://roy.vanegas.org/teaching/at-hunter-college/web-programming/](https://roy.vanegas.org/teaching/at-hunter-college/web-programming/).
