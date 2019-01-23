@@ -1,0 +1,75 @@
+{
+  "links": [
+    {
+      "nav": [
+        {
+          "name": "description",
+          "anchor": "#description",
+          "class": "fa fa-info"
+        },
+        {
+          "name": "learning outcomes",
+          "anchor": "#learning-outcomes",
+          "class": "fa fa-list"
+        },
+        {
+          "name": "class rules",
+          "anchor": "#class-rules",
+          "class": "fa fa-gavel"
+        },
+        {
+          "name": "software requirements",
+          "anchor": "#software-requirements",
+          "class": "fa fa-download"
+        },
+        {
+          "name": "students with disabilities",
+          "anchor": "#students-with-disabilities",
+          "class": "fa fa-info"
+        },
+        {
+          "name": "contact",
+          "anchor": "#contact",
+          "class": "fa fa-envelope"
+        },
+        {
+          "name": "schedule",
+          "anchor": "#schedule",
+          "class": "fa fa-calendar-o"
+        },
+        {
+          "name": "projects",
+          "anchor": "#projects",
+          "class": "fa fa-pencil"
+        },
+        {
+          "name": "resources",
+          "anchor": "#resources",
+          "class": "fa fa-question"
+        }
+      ],
+      "footer": [
+        {
+          "name": "GitHub",
+          "anchor": "https://github.com/code-warrior/web-programming"
+        },
+        {
+          "name": "Nunjucks",
+          "anchor": "https://mozilla.github.io/nunjucks/"
+        },
+        {
+          "name": "Gulp",
+          "anchor": "https://gulpjs.com/"
+        },
+        {
+          "name": "<abbr title='Syntactically Awesome Style Sheets'>Sass</abbr>",
+          "anchor": "https://sass-lang.com/"
+        },
+        {
+          "name": "Axe",
+          "anchor": "https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US"
+        }
+      ]
+    }
+  ]
+}

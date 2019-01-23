@@ -1,0 +1,34 @@
+@import 'variables';
+
+main {
+   margin: auto;
+   width: $page-width--desktop;
+   line-height: $leading;
+
+   p {
+      margin: 0 0 $margin-bottom;
+
+      &:first-of-type {
+         margin-top: 6px;
+      }
+   }
+
+   .fa {
+      font-size: $base-typeface-size;
+   }
+
+   .fa-container {
+      display: inline-block;
+      position: relative;
+      bottom: 4px;
+   }
+
+   @media (max-width: ($page-width--desktop + $grid--gutter-width)) {
+      width: $page-width--tablet;
+   }
+
+   @media (max-width: ($page-width--tablet + $grid--gutter-width)) {
+      width: 88%;
+      font-size: .9rem;
+   }
+}

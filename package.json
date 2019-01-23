@@ -1,0 +1,21 @@
+{
+  "name": "web-programming",
+  "version": "1.0.0",
+  "description": "The web site for Web Programming (MEDP 341), a course taught in the Film and Media Studies Dept at Hunter College.",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "./node_modules/sass-lint/bin/sass-lint.js -c ./.sass-lint.yml app/sass/*.scss -v -q"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "del": "^2.2.2",
+    "gulp": "^3.9.0",
+    "gulp-data": "^1.3.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-nunjucks-render": "^1.1.10",
+    "gulp-sass": "^4.0.2",
+    "sass-lint": "^1.12.1"
+  },
+  "author": "Roy Vanegas"
+}

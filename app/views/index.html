@@ -1,0 +1,51 @@
+{%- import 'app/controllers/macros/layouts.njk' as layouts -%}
+<!DOCTYPE html>
+<html lang="en">
+   {{ layouts.head(
+      'Web Programming — MEDP341 | Film & Media Studies | Hunter College',
+      'Web Programming is a Hunter College undergraduate media studies course focusing on the development of creative, interactive web sites using modern-day tools.'
+      )
+   }}
+<body>
+{% include 'app/controllers/blocks/ie_version_warning.njk' %}
+{% include 'app/controllers/blocks/header.njk' %}
+{{ layouts.nav('home', links) }}
+   <main>
+{% for section in sections %}
+   {% if section.id !== "schedule" %}
+      <section id="{{ section.id }}">
+         <h2><span class="fa-container"><span class="{{ section.class }}"></span></span> {{ section.title}}</h2>
+      {% for content in section.content %}
+         {% if content.blockquote %}
+         <blockquote>{{ content.blockquote | safe }}</blockquote>
+         {% else %}
+         <p>{{ content | safe }}</p>
+         {% endif %}
+      {% endfor %}
+
+      {% for item in section.list %}
+         {% if loop.first %}
+         <ul>
+            <li>{{ item | safe }}</li>
+         {% else %}
+            <li>{{ item | safe }}</li>
+         {% endif %}
+
+         {% if loop.last %}
+         </ul>
+         {% endif %}
+      {% endfor %}
+
+      {% for data in section.data %}
+         <h3>{{ data.section_sub_heading | safe }}</h3>
+         <p>{{ data.content | safe }}</p>
+      {% endfor %}
+      </section>
+   {% else %}
+      {% include 'app/controllers/blocks/schedule.njk' %}
+   {% endif %}
+{% endfor %}
+   </main>
+{% include 'app/controllers/blocks/footer.njk' %}
+</body>
+</html>
