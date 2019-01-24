@@ -46,7 +46,6 @@ header {
 
    > p {
       padding: 12px 0;
-      text-align: center;
 
       @media (max-width: ($page-width--tablet + $grid--gutter-width)) {
          font-size: .85rem;
