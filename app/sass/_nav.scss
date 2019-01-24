@@ -25,14 +25,14 @@
          // Style the first row of nav items
          &:nth-child(-n+3) {
             a {
-               padding-top: 20px;
+               padding-top: $grid--leading;
             }
          }
 
          // Style the last row of nav items
          &:nth-child(n+7) {
             a {
-               padding-bottom: 22px;
+               padding-bottom: $grid--leading + 2;
             }
          }
 
