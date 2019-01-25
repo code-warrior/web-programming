@@ -1,4 +1,4 @@
-const gulp = require(`gulp`);
+const { src, dest, series, watch } = require(`gulp`);
 const del = require(`del`);
 const HTMLPreprocessor = require(`gulp-nunjucks-render`);
 const HTMLCompressor = require(`gulp-htmlmin`);
@@ -8,43 +8,35 @@ const data = require(`gulp-data`);
 const fs = require(`fs`);
 const reload = browserSync.reload;
 
-/**
- * COMPILE CSS FOR DEV
- */
-gulp.task(`compileCSSForDev`, () => {
-    return gulp.src([
+let compileCSSForDev = () => {
+    return src([
         `./app/sass/*.scss`,
         `./app/sass/**/*.scss`])
         .pipe(CSSCompiler({
             outputStyle: `expanded`,
             precision: 10
         }).on(`error`, CSSCompiler.logError))
-        .pipe(gulp.dest(`./temp/css`));
-});
+        .pipe(dest(`./temp/css`));
+};
 
-/**
- * COMPILE CSS FOR PROD
- */
-gulp.task(`compileCSSForProd`, () => {
-    return gulp.src([
+let compileCSSForProd = () => {
+    return src([
         `./app/sass/*.scss`,
         `./app/sass/**/*.scss`])
         .pipe(CSSCompiler({
             outputStyle: `compressed`,
             precision: 10
         }).on(`error`, CSSCompiler.logError))
-        .pipe(gulp.dest(`./css`));
-});
+        .pipe(dest(`./css`));
 
-/**
- * COMPILE HTML FOR DEV
- */
-gulp.task(`compileHTMLForDev`, () => {
+};
+
+let compileHTMLForDev = () => {
     HTMLPreprocessor.nunjucks.configure({watch: false});
 
-    return gulp.src([
-        `./app/views/*.html/`,
-        `./app/views/**/*.html/`])
+    return src([
+        `./app/views/*.html`,
+        `./app/views/**/*.html`])
         .pipe(data(function () {
             return JSON.parse(fs.readFileSync(`./app/models/data.json`));
         }))
@@ -55,18 +47,15 @@ gulp.task(`compileHTMLForDev`, () => {
             return JSON.parse(fs.readFileSync(`./app/models/sections.json`));
         }))
         .pipe(HTMLPreprocessor())
-        .pipe(gulp.dest(`./temp`));
-});
+        .pipe(dest(`./temp`));
+};
 
-/**
- * COMPILE HTML FOR PROD
- */
-gulp.task(`compileHTMLForProd`, () => {
+let compileHTMLForProd = () => {
     HTMLPreprocessor.nunjucks.configure({watch: false});
 
-    return gulp.src([
-        `./app/views/*.html/`,
-        `./app/views/**/*.html/`])
+    return src([
+        `./app/views/*.html`,
+        `./app/views/**/*.html`])
         .pipe(data(function () {
             return require(`./app/models/data.json`);
         }))
@@ -81,43 +70,31 @@ gulp.task(`compileHTMLForProd`, () => {
             removeComments: true,
             collapseWhitespace: true
         }))
-        .pipe(gulp.dest(`./`));
-});
+        .pipe(dest(`./`));
+};
 
-/**
- * BUILD
- */
-gulp.task(`build`, [`compileHTMLForProd`, `compileCSSForProd`]);
+let serve = () => {
+    browserSync({
+        notify: true,
+        port: 9000,
+        reloadDelay: 100,
+        server: {
+            baseDir: [`./temp`, `./app/`]
+        }
+    });
 
-/**
- * DEFAULT
- */
-gulp.task(`default`, [`compileHTMLForDev`, `compileCSSForDev`],
-    () => {
-        browserSync({
-            notify: true,
-            port: 9000,
-            reloadDelay: 100,
-            server: {
-                baseDir: [`./temp`, `./app/`]
-            }
-        });
+    watch([
+        `./app/views/*.html`,
+        `./app/controllers/**/*.njk`,
+        `./app/controllers/*.njk`,
+        `./app/sass/*.scss`,
+        `./app/models/*.json`
+    ],
+    series(`compileHTMLForDev`, `compileCSSForDev`)
+    ).on(`change`, reload);
+};
 
-        gulp.watch([
-            `./app/views/*.html`,
-            `./app/controllers/**/*.njk`,
-            `./app/controllers/*.njk`,
-            `./app/sass/*.scss`,
-            `./app/models/*.json`
-        ],
-        [`compileHTMLForDev`, `compileCSSForDev`]).on(`change`, reload);
-    }
-);
-
-/**
- * CLEAN
- */
-gulp.task(`clean`, () => {
+async function clean () {
     let fs = require(`fs`),
         i,
         foldersToDelete = [`./temp`];
@@ -135,4 +112,12 @@ gulp.task(`clean`, () => {
     }
 
     process.stdout.write(`\n`);
-});
+}
+
+exports.compileCSSForDev = compileCSSForDev;
+exports.compileCSSForProd = compileCSSForProd;
+exports.compileHTMLForDev = compileHTMLForDev;
+exports.compileHTMLForProd = compileHTMLForProd;
+exports.build = series(compileHTMLForProd, compileCSSForProd);
+exports.default = series(compileHTMLForDev, compileCSSForDev, serve);
+exports.clean = clean;
