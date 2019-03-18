@@ -28,7 +28,6 @@ let compileCSSForProd = () => {
             precision: 10
         }).on(`error`, CSSCompiler.logError))
         .pipe(dest(`./css`));
-
 };
 
 let compileHTMLForDev = () => {
