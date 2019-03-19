@@ -23,14 +23,13 @@
       ],
       "list": [
         "how to automate common web development tasks using Gulp;",
-        "how to draw shapes in HTML5’s Canvas;",
+        "how to draw shapes using P5.js;",
         "how to write robust JavaScript that handles errors professionally;",
         "how to find and integrate JavaScript libraries;",
         "how to use jQuery;",
         "how to integrate plug-ins into a jQuery-based project;",
         "how to use Git and GitHub to revision control web (and other) projects;",
         "how to write methods and objects in JavaScript;",
-        "how to implement Web<abbr title=\"Real-Time Communication\">RTC</abbr> in a collaborative environment;",
         "how to interact with music in the browser using Tone.js;",
         "and, how to implement some basic Node.js applications."
       ]
