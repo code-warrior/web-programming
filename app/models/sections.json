@@ -155,7 +155,6 @@
         "Below is a short list of HTML, CSS, and JavaScript companion resources useful to the material we cover in class."
       ],
       "list": [
-        "Web<abbr title=\"Real-Time Communication\">RTC</abbr>’s <a href=\"https://webrtc.org/\" target=\"_blank\" rel=\"noopener\">home page</a>.",
         "Node’s <a href=\"https://nodejs.org/en/\" target=\"_blank\" rel=\"noopener\">home page</a>.",
         "Gulp’s <a href=\"https://gulpjs.com/\" target=\"_blank\" rel=\"noopener\">home page</a>.",
         "jQuery’s <a href=\"https://jquery.com/\" target=\"_blank\" rel=\"noopener\">home page</a>.",
