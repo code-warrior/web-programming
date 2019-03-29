@@ -140,8 +140,8 @@
         "All projects will be available on GitHub."
       ],
       "list": [
-        "<b>Collaborative project</b>: 20%",
         "<b><a href=\"https://github.com/code-warrior/midterm-project--spring-2019--web-programming\" target=\"_blank\" rel=\"noopener\">Midterm project</a></b>: 20%",
+        "<b><a href=\"https://github.com/code-warrior/collaborative-project--spring-2019--web-programming\" target=\"_blank\" rel=\"noopener\">Collaborative project</a></b>: 20%",
         "<b>Semester project</b>: 20%",
         "<b>Final project</b>: 30%",
         "<b>Attendance and participation</b>: 10%"
